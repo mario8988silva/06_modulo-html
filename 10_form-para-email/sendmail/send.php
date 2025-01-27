@@ -20,7 +20,7 @@ $message = $_POST['subject'];
 /// Construção da mensagem a enviar por email, em php utiliza-se o '.' para juntar strings em vez do '+'
 //$msgAEnviar = "Nome: ".$name.' ,Email: '.$email.' ,Mensagem: '.$message;
 $msgAEnviar = "<p>Nome: ".$firstname."</p>";
-$msgAEnviar .= "<p>Nome: ".$lastname."</p>";
+$msgAEnviar .= "<p>Apelido: ".$lastname."</p>";
 $msgAEnviar .= "<p>Email: ".$email."</p>";
 $msgAEnviar .= "<p>Mensagem: ".$message."</p>";
 
@@ -45,6 +45,7 @@ $mail->Subject = "Mensagem de teste ....";
 $mail->Body    = $msgAEnviar;
 $mail->AltBody = $msgAEnviar;
 
+// insere ou mensagem, ou chama o ficheiro .html de sucesso
 if(!$mail->send()) {
     // echo 'Message could not be sent.';
     // echo 'Mailer Error: ' . $mail->ErrorInfo;
@@ -52,6 +53,8 @@ if(!$mail->send()) {
     header("Location: https://joaogoncalves.github.io/sendmail/feedbackformerror.html");
     
 }
+
+// insere ou mensagem, ou chama o ficheiro .html de erro
 else {
      //echo 'Message has been sent.';
     //header("Location: ../feedbackform.html");
